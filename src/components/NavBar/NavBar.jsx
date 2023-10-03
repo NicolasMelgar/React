@@ -1,22 +1,25 @@
 import './NavBar.css'
 import CartWidget from "../CartWidget/CartWidget"
-import { Button } from "@mui/material";
+
+import { Link, NavLink } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 
 const NavBar = () => {
     return (
-      <div className="container">
-        <h2>OfertasYa</h2>
+      <nav className="container">
+        <Link to='/'> 
+          <h2>OfertasYa</h2>
+        </Link>
+
         <div className="barra">
-          <ul>
-            <li><Button href="https://google.com.ar" target="blank" variant="outlined" color="primary">Celulares</Button></li>
-            <li><Button href="https://google.com.ar" target="blank" variant="outlined" color="primary">Tablets</Button></li>
-            <li><Button href="https://google.com.ar" target="blank" variant="outlined" color="primary">Notebook</Button></li>
-            <li><Button href="https://google.com.ar" target="blank" variant="outlined" color="primary">Gammer</Button></li>
-          </ul>
+          <Button><NavLink to={`/category/celular`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Celulares</NavLink></Button>
+          <Button><NavLink to={`/category/tablet`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Tablets</NavLink></Button>
+          <NavLink to={`/category/notebook`} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}><Button variant='contained'>Notebook</Button></NavLink>
+          
         </div>
         <CartWidget />
-      </div>
+      </nav>
     );
 }
 
